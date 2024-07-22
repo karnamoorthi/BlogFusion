@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Deletion</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Confirm Deletion</h1>
+        <nav>
+            <a href="{% url 'blog_list' %}">Back to List</a>
+        </nav>
+    </header>
+    <main>
+        <p>Are you sure you want to delete "{{ post.title }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirm</button>
+            <a href="{% url 'blog_list' %}">Cancel</a>
+        </form>
+    </main>
+</body>
+</html>
